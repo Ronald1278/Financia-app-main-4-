@@ -81,15 +81,19 @@ export default function SettingsScreen() {
           </TouchableOpacity>
         ))}
       </ScrollView>
-
-      <BottomNav
+<BottomNav
         activeTab="config"
         onChangeTab={(tab) => {
           if (tab === "inicio") {
             router.push("/");
+          } else if (tab === "historico") {
+            router.push("/history");
+          } else if (tab === "relatorios") {
+            router.push("/reports");
           }
         }}
       />
     </View>
   );
 }
+

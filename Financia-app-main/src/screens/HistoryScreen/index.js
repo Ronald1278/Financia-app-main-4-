@@ -7,10 +7,10 @@ import {
   FlatList,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import BottomNav from '../../components/BottomNav';
 import { colors } from '../../theme/colors';
-import { styles } from './styles';
-
+import { styles } from './style';
 // Dados idênticos aos do protótipo (Histórico / Agosto 2026)
 const TRANSACOES = [
   { id: '1', titulo: 'Salário', data: '05/08/2026', valor: '+R$ 2.000,00', tipo: 'receita', icone: 'wallet-outline', bgIcone: '#E8F5E9', corIcone: '#2E9E3E' },
@@ -22,6 +22,8 @@ const TRANSACOES = [
 ];
 
 export default function HistoryScreen() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary || '#006847'} />
@@ -62,9 +64,18 @@ export default function HistoryScreen() {
           )}
         />
       </View>
-
-      {/* Menu Inferior */}
-      <BottomNav activeTab="History" />
+ {/* Menu Inferior */}
+      <BottomNav
+        activeTab="historico"
+        onChangeTab={(tab) => {
+          if (tab === 'inicio') {
+            router.push('/');
+          } else if (tab === 'config') {
+            router.push('/settings');
+          }
+        }}
+      />
+        
     </View>
   );
 }

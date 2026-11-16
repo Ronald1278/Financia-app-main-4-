@@ -113,11 +113,15 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </Modal>
 
-      <BottomNav
+       <BottomNav
         activeTab="inicio"
         onChangeTab={(tab) => {
           if (tab === "config") {
             router.push("/settings");
+          } else if (tab === "historico") {
+            router.push("/history");
+          } else if (tab === "relatorios") {
+            router.push("/reports");
           }
         }}
       />
